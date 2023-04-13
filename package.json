@@ -1,6 +1,6 @@
 {
   "name": "react-multi-highlight",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "react component to highlight multiple words in text according to each config",
   "homepage": "https://github.com/xyuanbuilds/react-multi-highlight#readme",
   "repository": {
