@@ -1,6 +1,6 @@
 {
   "name": "react-multi-highlight",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "react component to highlight multiple words in text according to each config",
   "repository": "xyuanbuilds/react-multi-highlight",
   "license": "MIT",
