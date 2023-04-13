@@ -5,6 +5,8 @@
 
 react component to highlight multiple words in text according to each config
 
+![Image text](https://raw.githubusercontent.com/xyuanbuilds/react-multi-highlight/main/simple.png)
+
 ## Usage
 
 ```jsx
