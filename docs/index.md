@@ -1,7 +1,7 @@
 ---
 hero:
   title: library
-  description: text to hightlight html
+  description: text to highlight html
   actions:
     - text: Hello
       link: /

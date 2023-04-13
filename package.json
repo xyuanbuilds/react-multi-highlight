@@ -1,6 +1,6 @@
 {
-  "name": "text-highlight",
-  "version": "0.0.1",
+  "name": "react-multi-highlight",
+  "version": "1.0.0",
   "description": "react component to highlight multiple words in text according to each config",
   "license": "MIT",
   "module": "dist/index.js",

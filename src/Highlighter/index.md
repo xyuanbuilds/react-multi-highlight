@@ -1,9 +1,9 @@
-# text-highlight
+# react-multi-highlight
 
 react component to highlight multiple words in text according to each config
 
 ```jsx
-import Highlighter from 'text-highlight';
+import Highlighter from 'react-multi-highlight';
 
 export default () => (
   <Highlighter

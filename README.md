@@ -1,14 +1,14 @@
-# text-highlight
+# react-multi-highlight
 
-[![NPM version](https://img.shields.io/npm/v/text-highlight.svg?style=flat)](https://npmjs.org/package/text-highlight)
-[![NPM downloads](http://img.shields.io/npm/dm/text-highlight.svg?style=flat)](https://npmjs.org/package/text-highlight)
+[![NPM version](https://img.shields.io/npm/v/react-multi-highlight.svg?style=flat)](https://npmjs.org/package/react-multi-highlight)
+[![NPM downloads](http://img.shields.io/npm/dm/react-multi-highlight.svg?style=flat)](https://npmjs.org/package/react-multi-highlight)
 
 react component to highlight multiple words in text according to each config
 
 ## Usage
 
 ```jsx
-import Highlighter from 'text-highlight';
+import Highlighter from 'react-multi-highlight';
 
 export default () => (
   <Highlighter
