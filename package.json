@@ -2,7 +2,11 @@
   "name": "react-multi-highlight",
   "version": "1.0.1",
   "description": "react component to highlight multiple words in text according to each config",
-  "repository": "xyuanbuilds/react-multi-highlight",
+  "homepage": "https://github.com/xyuanbuilds/react-multi-highlight#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xyuanbuilds/react-multi-highlight.git"
+  },
   "license": "MIT",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
