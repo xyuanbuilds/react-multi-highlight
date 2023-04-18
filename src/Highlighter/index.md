@@ -9,6 +9,13 @@ export default () => (
   <Highlighter
     config={[
       {
+        ranges: [[0, 1]],
+        className: 'ooo',
+        style: {
+          color: 'green',
+        },
+      },
+      {
         word: 'i',
         className: 'i',
         style: {

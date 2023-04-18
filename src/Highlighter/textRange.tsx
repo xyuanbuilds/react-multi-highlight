@@ -1,8 +1,6 @@
 import escapeStringRegexp from 'escape-string-regexp';
 import React from 'react';
-import type { IHighlightConfig } from './type';
-
-type Range = [start: number, end: number];
+import type { IHighlightConfig, Range } from './type';
 
 const stringToRegex = (str: string, caseSens: boolean = true) =>
   new RegExp(escapeStringRegexp(str), caseSens ? 'g' : 'gi');
@@ -40,16 +38,29 @@ export const getRangesFromConfig = (
   } = {},
 ) => {
   const rangeToConfig: Map<Range, IHighlightConfig> = new Map();
-  const rangesMap: Record<string, Range[]> = {};
+
   let splitIndexes: number[] = [];
   configs.forEach((config) => {
-    const { word } = config;
-    const ranges = getWordRanges(text, word, options.caseSensitive);
-    ranges.forEach((range) => {
-      rangeToConfig.set(range, config);
-      splitIndexes = splitIndexes.concat(range);
-    });
-    rangesMap[word] = ranges;
+    if ('word' in config) {
+      const { word } = config;
+
+      const ranges = getWordRanges(text, word, options.caseSensitive);
+
+      ranges.forEach((range) => {
+        rangeToConfig.set(range, config);
+        splitIndexes = splitIndexes.concat(range);
+      });
+    } else {
+      const { ranges } = config;
+
+      ranges.forEach((range) => {
+        if (!Array.isArray(range) || range.length !== 2) {
+          console.error('[react-multi-highlight]', `${range} is not a range`);
+        }
+        rangeToConfig.set(range, config);
+        splitIndexes = splitIndexes.concat(range);
+      });
+    }
   });
 
   splitIndexes.sort((a, b) => a - b);
@@ -96,7 +107,7 @@ export const toHTML = (
     const words = text.slice(left, right);
     if (configs.length > 0) {
       const { className, style } = configs.reduce<{
-        className: string;
+        className?: string;
         style: React.CSSProperties;
       }>(
         (res, { className, style }, index) => {
@@ -110,7 +121,7 @@ export const toHTML = (
           return res;
         },
         {
-          className: '',
+          className: undefined,
           style: {},
         },
       );
@@ -127,73 +138,3 @@ export const toHTML = (
 
   return fragments;
 };
-
-// test
-// 'Life, thin and light-off time and time again',
-// [
-//   {
-//     word: 'and',
-//     className: 'a',
-//     style: {
-//       color: 'yellow',
-//     },
-//   },
-//   {
-//     word: 'time',
-//     className: 'b',
-//     style: {
-//       color: 'red',
-//     }
-//   },
-//   {
-//     word: 'd light-off ti',
-//     className: 'c',
-//     style: {
-//       textDecorator: 'underline',
-//     }
-//   }
-// ]
-
-// rangesMap{
-//   "and": [
-//       [
-//           11,
-//           14
-//       ],
-//       [
-//           30,
-//           33
-//       ]
-//   ],
-//   "time": [
-//       [
-//           25,
-//           29
-//       ],
-//       [
-//           34,
-//           38
-//       ]
-//   ],
-//   "d light-off ti": [
-//       [
-//           13,
-//           27
-//       ]
-//   ]
-// }
-
-// splitIndexes [
-//   0,
-//   11,
-//   13,
-//   14,
-//   25,
-//   27,
-//   29,
-//   30,
-//   33,
-//   34,
-//   38,
-//   44
-// ]

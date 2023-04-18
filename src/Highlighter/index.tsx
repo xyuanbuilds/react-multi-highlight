@@ -10,9 +10,13 @@ const Highlighter: FC<IHighlighterProps> = ({
   normalTag,
 }) => {
   // config -> ranges
-  const { splitIndexes, rangeToConfig } = getRangesFromConfig(text, config, {
-    caseSensitive,
-  });
+  const { splitIndexes, rangeToConfig } = getRangesFromConfig(
+    text,
+    Array.isArray(config) ? config : [config],
+    {
+      caseSensitive,
+    },
+  );
 
   // ranges -> html
   const fragments = toHTML(text, splitIndexes, rangeToConfig, {
