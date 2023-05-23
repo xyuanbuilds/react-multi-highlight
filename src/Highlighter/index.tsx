@@ -1,4 +1,5 @@
-import React, { type FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 import { getRangesFromConfig, toHTML } from './textRange';
 import { IHighlighterProps } from './type';
 
